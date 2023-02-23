@@ -8,11 +8,17 @@ from django.urls import reverse
 def add_view(request: WSGIRequest):
     if request.method == "GET":
         return render(request, 'task_create.html')
+    
+    if request.POST.get('completion_date') != "":
+        completion_date = request.POST.get('completion_date')
+    else:
+        completion_date = None
+
     task_data = {
         'title': request.POST.get('title'),
         'description': request.POST.get('description'),
         'status': request.POST.get('status'),
-        'completion_date': request.POST.get('completion_date')
+        'completion_date': completion_date
     }
     task = Task.objects.create(**task_data)
     return redirect('task_detail', pk=task.pk)
