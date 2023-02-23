@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.core.handlers.wsgi import WSGIRequest
-from webapp.models import Article
+from webapp.models import Task
 
 
 def index_view(request: WSGIRequest):
-    articles = Article.objects.all()
+    tasks = Task.objects.all()
     context={
-        'articles': articles
+        'tasks': tasks
     }
     return render(request, 'index.html', context=context)

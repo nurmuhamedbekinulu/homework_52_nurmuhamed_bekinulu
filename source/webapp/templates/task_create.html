@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Task Create{% endblock %}
+{% block content%}
+    <h1>New Task</h1>
+    <div class="form">
+        <form action="{% url 'task_add' %}" method="post">
+            {% csrf_token %}
+            <div class="form_row" for="title">
+                <lable for="title">Title</lable>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="form_row">
+                <lable for="description">Dscription</lable>
+                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form_row">
+                <lable for="status">Status</lable>
+                <input type="text" id="status" name="status">
+            </div>
+            <div class="form_row">
+                <lable for="completion_date">Date of completion</lable>
+                <input type="text" id="completion_date" name="completion_date">
+            </div>
+            <div class="form_row">
+                <input type="submit">
+            </div>
+        </form>
+    </div>
+{% endblock %}
