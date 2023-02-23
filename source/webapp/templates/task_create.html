@@ -14,8 +14,16 @@
                 <textarea name="description" id="description" cols="30" rows="10"></textarea>
             </div>
             <div class="form_row">
-                <lable for="status">Status</lable>
-                <input type="text" id="status" name="status">
+                <div class="mb-3 row">
+                    <label for="status" class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-10">
+                        <select id="status" name="status" class="form-select">
+                            {% for choice in choices %}
+                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="form_row">
                 <lable for="completion_date">Date of completion</lable>

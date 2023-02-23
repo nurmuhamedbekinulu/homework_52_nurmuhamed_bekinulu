@@ -3,11 +3,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from webapp.models import Task
 from django.http import HttpResponseNotFound
 from django.urls import reverse
+from static.classes.static import Static
 
 
 def add_view(request: WSGIRequest):
     if request.method == "GET":
-        return render(request, 'task_create.html')
+        choices = Static.choices
+        return render(request, 'task_create.html', context={'choices': choices})
     
     if request.POST.get('completion_date') != "":
         completion_date = request.POST.get('completion_date')
