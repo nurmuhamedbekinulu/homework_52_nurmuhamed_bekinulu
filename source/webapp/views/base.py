@@ -5,7 +5,7 @@ from webapp.models import Task
 
 def index_view(request: WSGIRequest):
     tasks = Task.objects.all()
-    context={
+    context = {
         'tasks': tasks
     }
     return render(request, 'index.html', context=context)
