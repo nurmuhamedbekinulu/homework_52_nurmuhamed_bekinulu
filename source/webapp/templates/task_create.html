@@ -1,36 +1,40 @@
 {% extends 'base.html' %}
-{% block title %}Task Create{% endblock %}
+{% block title %}Создать новую задачу{% endblock %}
 {% block content%}
-    <h1>New Task</h1>
-    <div class="form">
+    <h1>Создать новую задачу</h1>
+    <div class="form  col-8">
         <form action="{% url 'task_add' %}" method="post">
             {% csrf_token %}
-            <div class="form_row" for="title">
-                <lable for="title">Title</lable>
-                <input type="text" id="title" name="title">
-            </div>
-            <div class="form_row">
-                <lable for="description">Dscription</lable>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
-            </div>
-            <div class="form_row">
-                <div class="mb-3 row">
-                    <label for="status" class="col-sm-2 col-form-label">Status</label>
-                    <div class="col-sm-10">
-                        <select id="status" name="status" class="form-select">
-                            {% for choice in choices %}
-                            <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+            <div class="mb-3 row">
+                <label for="title" class="col-sm-2 col-form-label">Заголовок</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" name="title">
                 </div>
             </div>
-            <div class="form_row">
-                <lable for="completion_date">Date of completion</lable>
-                <input type="text" id="completion_date" name="completion_date">
+            <div class="mb-3 row">
+                <label for="description" class="col-sm-2 col-form-label">Описание</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="description" id="description" cols="30" rows="10"></textarea>
+                </div>
             </div>
-            <div class="form_row">
-                <input type="submit">
+            <div class="mb-3 row">
+                <label for="status" class="col-sm-2 col-form-label">Статус</label>
+                <div class="col-sm-10">
+                    <select id="status" name="status" class="form-select">
+                        {% for choice in choices %}
+                        <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="completion_date" class="col-sm-2 col-form-label">Выполнить до</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="completion_date" name="completion_date" placeholder="YYYY-mm-dd">
+                </div>
+            </div>
+            <div class="d-grid gap-2 col-8 mx-auto">
+                <button type="submit" class="btn btn-outline-primary mb-3">Создать</button>
             </div>
         </form>
     </div>
