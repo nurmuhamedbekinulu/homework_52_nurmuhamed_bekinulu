@@ -3,11 +3,11 @@ from webapp.models import Task
 
 
 # Register your models here.
-# class ArticleAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'title', 'author', 'created_at')
-#     list_filter = ('id', 'title', 'author', 'created_at')
-#     search_fields = ('title', 'author')
-#     fields = ('text', 'title', 'author', 'created_at')
-#     readonly_fields = ('id', 'created_at', 'updated_at')
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'description', 'status', 'completion_date')
+    list_filter = ('id', 'title', 'status', 'completion_date')
+    search_fields = ('title', 'status', 'completion_date')
+    fields = ('text', 'title', 'description', 'status' , 'completion_date')
+    readonly_fields = ('id', 'id')
 
-# admin.site.register(Article, ArticleAdmin)
+admin.site.register(Task, TaskAdmin)
